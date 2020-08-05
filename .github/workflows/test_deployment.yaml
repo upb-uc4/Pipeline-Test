@@ -26,6 +26,6 @@ jobs:
     
     # run sbt docker publish
     - name: Deploy
-      script:
-        - echo $CI_COMMIT_TAG
-        - echo ${CI_COMMIT_TAG%-*}
+      run: |
+        echo $GITHUB_REF
+        echo ${GITHUB_REF%-*}
