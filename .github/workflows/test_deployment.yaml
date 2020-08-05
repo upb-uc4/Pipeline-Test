@@ -27,9 +27,9 @@ jobs:
     # run sbt docker publish
     - name: Deploy
       run: |
-        tag = $GITHUB_REF
+        tag=$GITHUB_REF
         echo $tag
-        tag = ${tag#refs/tags/}
+        tag=${tag#refs/tags/}
         echo $tag
-        tag = ${tag%-v*}
+        tag=${tag%-v*}
         echo tag
