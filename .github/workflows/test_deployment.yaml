@@ -34,4 +34,4 @@ jobs:
         tag=${tag%-v*}
         echo $tag
         echo
-        echo ${GITHUB_REF#refs/tags/%-v*}
+        echo ${GITHUB_REF#"refs/tags/"%"-v*"}
