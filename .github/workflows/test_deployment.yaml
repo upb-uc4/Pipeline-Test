@@ -30,3 +30,4 @@ jobs:
         tag=${GITHUB_REF#refs/tags/}
         tag=${tag%-v*}
         echo $tag
+        sbt ${tag}_service/docker:publish
