@@ -27,4 +27,5 @@ jobs:
     # run sbt docker publish
     - name: Deploy
       run: |
-        echo CI_COMMIT_TAG
+        echo $CI_COMMIT_TAG
+        echo ${CI_COMMIT_TAG%-*}
