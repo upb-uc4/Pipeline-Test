@@ -1,6 +1,6 @@
 import com.typesafe.sbt.packager.docker.DockerChmodType
 
-version in ThisBuild := "0.1"
+version in ThisBuild := "v0.4.0"
 
 scalaVersion in ThisBuild := "2.13.3"
 
@@ -17,4 +17,5 @@ lazy val Pipeline = (project in file("."))
   .aggregate(test_service)
 
 lazy val test_service = (project in file("test"))
+  .enablePlugins(LagomScala)
   .settings(dockerSettings)
