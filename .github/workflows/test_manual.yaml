@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set selected color
-      run: echo '::set-output name=SELECTED_COLOR::yellow'
-      id: random-color-generator
+      
+    - name: Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'Something'
