@@ -18,12 +18,12 @@ jobs:
       
     - name: This fails
       run: | 
-        if (exit -1); then
+        if (exit 0); then
           echo "Good"
-          echo "::set-env name=Failure::0"
+          echo "Failure=0" >> $GITHUB_ENV
         else
           echo "Bad"
-          echo "::set-env name=Failure::1"
+          echo "Failure=1" >> $GITHUB_ENV
         fi
       
     - name: Discord notification
