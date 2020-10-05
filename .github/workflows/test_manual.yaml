@@ -16,7 +16,11 @@ jobs:
 
     steps:
       
+    - name: This fails
+      run: exit -1
+      
     - name: Discord notification
+      if: ${{ failure() }}
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
