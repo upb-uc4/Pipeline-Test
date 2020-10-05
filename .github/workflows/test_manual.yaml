@@ -10,6 +10,11 @@ on:
 
 jobs:
   test:
+    name: Test Color
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Set selected color
       run: echo '::set-output name=SELECTED_COLOR::yellow'
       id: random-color-generator
