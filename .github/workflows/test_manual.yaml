@@ -1,0 +1,18 @@
+name: Test Manual Pipeline
+
+on:
+  # manual triggers with parameters
+  workflow_dispatch:
+    inputs:
+        test_val:
+            description: "Test Value"
+            required: true
+
+jobs:
+  test:
+    - name: Set selected color
+      run: echo '::set-output name=SELECTED_COLOR::yellow'
+      id: random-color-generator
+      
+    - name: Get color
+      run: echo 'The selected color is' ${steps.random-color-generator.outputs.SELECTED_COLOR}
