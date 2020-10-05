@@ -17,10 +17,17 @@ jobs:
     steps:
       
     - name: This fails
-      run: exit -1
+      run: | 
+        if exit -1; then
+          echo "Good"
+          echo "::set-env name=Failure::0"
+        else
+          echo "Bad"
+          echo "::set-env name=Failure::1"
+        fi
       
     - name: Discord notification
-      if: ${{ failure() }}
+      if: ${{ $Failure != 0 }}
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
