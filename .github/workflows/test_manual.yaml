@@ -15,15 +15,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Check out source repository
+      uses: actions/checkout@v2
       
     - name: This fails
       run: | 
         if (exit 1); then
-          echo "Good"
           echo "Failure=0" >> $GITHUB_ENV
         else
-          echo "Bad"
           echo "Failure=1" >> $GITHUB_ENV
+          message=`cat test.txt`
+          echo "FailureMessage=$message" >> $GITHUB_ENV
         fi
       
     - name: Discord notification
@@ -32,4 +35,4 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'HA, it works.'
+        args: ${{ env.FailureMessage }}
